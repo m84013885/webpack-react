@@ -8,5 +8,6 @@ package-lock.json
 stats.json
 .idea
 build
+dist
 .vscode
 package-lock.json
