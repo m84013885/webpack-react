@@ -1,7 +1,9 @@
 //webpack.dev.js
+const webpack = require('webpack')
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js')
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 //merge用法用来将配置内容合并到webpack.base.js中
 //第一个参数是原始的webpack的配置json对象
@@ -9,7 +11,10 @@ const path = require('path')
 module.exports = merge(common, {
     //定义环境为开发环境
     mode: 'development',
-    devtool: 'inline-source-map', //内联配置源码映射
+    // devtool: 'inline-source-map', //内联配置源码映射
+    entry: {
+        index: './src/main.js'
+    },
     //配置本地服务
     devServer: {
         //配置本地的静态资源文件夹，用来让这两个文件夹内部的文件可以通过访问http地址直接展示
@@ -38,5 +43,23 @@ module.exports = merge(common, {
                 { loader: 'postcss-loader' },
             ]
         }, ]
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            React: 'react',
+            ReactDOM: 'react-dom',
+            useEffect: ['react', 'useEffect'],
+            useState: ['react', 'useState'],
+            useCallback: ['react', 'useCallback'],
+            useMemo: ['react', 'useMemo'],
+            useReducer: ['react', 'useReducer'],
+            useRef: ['react', 'useRef'],
+            useContext: ['react', 'useContext'],
+        }),
+        new HtmlWebpackPlugin({
+            template: './public/index.html',
+            filename: 'index.html',
+            chunks: ['index']
+        }),
+    ]
 })

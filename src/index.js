@@ -1,15 +1,13 @@
-import React from 'react'
-import style from './index.css'
-console.log(style)
+import { Panel, Toast, Popup } from './components'
 
-const Index = () => {
-    // something
+const a = () => {
     return (
         <>
-            <div className={style.box}></div>
-            something 
+            <Panel></Panel>
+            <Popup></Popup>
+            <Toast></Toast>
         </>
     )
 }
 
-export default Index
+export default a 
