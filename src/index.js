@@ -1,6 +1,7 @@
 import { Panel, Toast, Popup } from './components'
+import style from './index.css'
 
-const a = () => {
+const Index = () => {
     return (
         <>
             <Panel></Panel>
@@ -10,4 +11,4 @@ const a = () => {
     )
 }
 
-export default a 
+export default Index 

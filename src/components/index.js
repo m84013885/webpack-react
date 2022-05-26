@@ -1,5 +1,5 @@
-import Popup from './popup'
-import Panel from './panel'
-import Toast from './toast'
+import Popup from './popup/index'
+import Panel from './panel/index'
+import Toast from './toast/index'
 
 export { Popup, Panel, Toast }
