@@ -18,6 +18,5 @@ body {
 .img {
     width: 100px;
     height: 100px;
-    background-image: url('../assets/all.png');
     background-size: 100% 100%;
 }

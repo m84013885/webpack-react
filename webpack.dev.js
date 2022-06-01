@@ -28,7 +28,7 @@ module.exports = merge(common, {
     },
     module: {
         rules: [{ //用来编译css代码
-            test: /\.css$/,
+            test: new RegExp(`^(?!.*\\.common).*\\.css`),
             use: [
                 { loader: 'style-loader' },
                 {
@@ -42,12 +42,17 @@ module.exports = merge(common, {
                 },
                 { loader: 'postcss-loader' },
             ]
+        },
+        {
+            test: new RegExp(`^(.*\\.common).*\\.css`),
+            use: ['style-loader', 'css-loader', 'postcss-loader'],
         }, ]
     },
     plugins: [
         new webpack.ProvidePlugin({
             React: 'react',
             ReactDOM: 'react-dom',
+            PropTypes: 'prop-types',
             useEffect: ['react', 'useEffect'],
             useState: ['react', 'useState'],
             useCallback: ['react', 'useCallback'],
